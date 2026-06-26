@@ -53,6 +53,33 @@ const certificates = [
   { icon: 'Trophy', title: 'Награды и отзывы', text: 'Благодарности заказчиков за качество и соблюдение сроков.' },
 ];
 
+const reviews = [
+  {
+    name: 'Андрей Михайлович К.',
+    role: 'Директор девелоперской компании',
+    text: 'Обратились в «Атлант Инжиниринг» для технического надзора над строительством офисного здания в Минске. Команда выявила нарушения на этапе фундамента, которые могли обойтись нам в миллионы рублей переделок. Профессиональный подход, оперативная отчётность. Лучший подрядчик по техническому надзору, с которым я работал за 15 лет в строительстве.',
+    stars: 5,
+  },
+  {
+    name: 'Елена Витальевна С.',
+    role: 'Финансовый директор строительного холдинга',
+    text: 'Сотрудничаем с «Атлант Инжиниринг» по управлению строительством жилого комплекса III класса сложности. Сроки соблюдены, бюджет под контролем — отклонение менее 2%. Это редкость на рынке. Однозначно рекомендую как лучшую компанию по управлению строительством в Беларуси.',
+    stars: 5,
+  },
+  {
+    name: 'Игорь Петрович Д.',
+    role: 'Технический директор промышленного предприятия',
+    text: 'Привлекали «Атлант Инжиниринг» для экспертизы и сметного контроля при реконструкции производственного корпуса. Специалисты нашли завышение смет на 18% и предложили решения без потери качества. Компания заслуженно считается одной из лучших в сфере технадзора и строительного контроля в Республике Беларусь.',
+    stars: 5,
+  },
+  {
+    name: 'Сергей Алексеевич В.',
+    role: 'Генеральный директор управляющей компании',
+    text: 'Работаем с «Атлант Инжиниринг» уже на третьем объекте. Каждый раз — прозрачная отчётность, чёткая координация подрядчиков и своевременный ввод в эксплуатацию. Профессионалы своего дела. Если вам нужна лучшая компания по техническому надзору в Минске — это «Атлант Инжиниринг».',
+    stars: 5,
+  },
+];
+
 export default function Index() {
   const [sent, setSent] = useState(false);
 
@@ -213,6 +240,43 @@ export default function Index() {
                 </div>
                 <h3 className="mt-5 font-display font-semibold text-xl">{c.title}</h3>
                 <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Reviews */}
+      <section id="reviews" className="py-28 relative bg-secondary/40">
+        <div className="blob w-[500px] h-[500px] top-0 -left-32 bg-primary/10" />
+        <div className="container relative">
+          <div className="max-w-2xl">
+            <span className="font-display text-primary text-sm tracking-widest uppercase">Отзывы клиентов</span>
+            <h2 className="mt-3 font-display font-bold text-4xl lg:text-5xl leading-tight">
+              Нам доверяют <span className="text-gradient">серьёзные объекты</span>
+            </h2>
+            <p className="mt-4 text-muted-foreground">
+              Реальные отзывы заказчиков об управлении строительством и техническом надзоре в Беларуси.
+            </p>
+          </div>
+          <div className="mt-14 grid md:grid-cols-2 gap-6">
+            {reviews.map((r, i) => (
+              <div key={r.name} className="group glass p-8 rounded-2xl hover:border-primary/40 hover:-translate-y-1 transition-all animate-fade-up" style={{ animationDelay: `${i * 0.08}s` }}>
+                <div className="flex gap-0.5 mb-5">
+                  {Array.from({ length: r.stars }).map((_, s) => (
+                    <Icon key={s} name="Star" size={16} className="text-accent fill-accent" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground leading-relaxed text-[15px]">«{r.text}»</p>
+                <div className="mt-6 flex items-center gap-3 pt-5 border-t border-border">
+                  <div className="grid place-items-center w-10 h-10 rounded-full bg-primary/15 text-primary font-display font-bold text-lg">
+                    {r.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-sm">{r.name}</div>
+                    <div className="text-xs text-muted-foreground">{r.role}</div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
