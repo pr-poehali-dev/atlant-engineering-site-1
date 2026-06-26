@@ -57,25 +57,25 @@ export default function Index() {
   const [sent, setSent] = useState(false);
 
   return (
-    <div className="min-h-screen bg-background text-foreground antialiased">
+    <div className="min-h-screen bg-background text-foreground antialiased overflow-x-hidden">
       {/* Header */}
-      <header className="fixed top-0 inset-x-0 z-50 backdrop-blur-md bg-primary/90 border-b border-white/10">
+      <header className="fixed top-0 inset-x-0 z-50 glass">
         <div className="container flex items-center justify-between h-16">
-          <a href="#" className="flex items-center gap-2.5 text-primary-foreground">
-            <span className="grid place-items-center w-9 h-9 bg-accent text-accent-foreground rounded-sm">
+          <a href="#" className="flex items-center gap-2.5">
+            <span className="grid place-items-center w-9 h-9 bg-primary text-primary-foreground rounded-lg glow">
               <Icon name="Mountain" size={20} />
             </span>
             <span className="font-display font-semibold text-lg tracking-wide leading-none">
-              АТЛАНТ<span className="text-accent"> ИНЖИНИРИНГ</span>
+              АТЛАНТ<span className="text-primary"> ИНЖИНИРИНГ</span>
             </span>
           </a>
-          <nav className="hidden md:flex items-center gap-8 text-sm text-primary-foreground/80">
-            <a href="#about" className="hover:text-accent transition-colors">О компании</a>
-            <a href="#services" className="hover:text-accent transition-colors">Услуги</a>
-            <a href="#certificates" className="hover:text-accent transition-colors">Сертификаты</a>
-            <a href="#contacts" className="hover:text-accent transition-colors">Контакты</a>
+          <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+            <a href="#about" className="hover:text-primary transition-colors">О компании</a>
+            <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
+            <a href="#certificates" className="hover:text-primary transition-colors">Сертификаты</a>
+            <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
           </nav>
-          <a href={PHONE_HREF} className="hidden sm:flex items-center gap-2 text-primary-foreground font-medium text-sm hover:text-accent transition-colors">
+          <a href={PHONE_HREF} className="hidden sm:flex items-center gap-2 font-medium text-sm hover:text-primary transition-colors">
             <Icon name="Phone" size={16} />
             {PHONE}
           </a>
@@ -85,53 +85,65 @@ export default function Index() {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={HERO_IMG} alt="Строительство" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/90 to-primary/40" />
+          <img src={HERO_IMG} alt="Строительство" className="w-full h-full object-cover opacity-30" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
+        <div className="blob w-[600px] h-[600px] -top-40 -right-40 bg-primary/25 animate-glow-pulse" />
+        <div className="blob w-[500px] h-[500px] bottom-0 -left-40 bg-accent/15 animate-float" />
+        <div className="absolute inset-0 grid-texture" />
+
         <div className="container relative z-10 pt-28 pb-16">
-          <div className="max-w-2xl">
-            <div className="animate-fade-up inline-flex items-center gap-2 px-3 py-1.5 mb-6 border border-accent/40 text-accent text-xs font-medium tracking-widest uppercase rounded-sm">
-              <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+          <div className="max-w-3xl">
+            <div className="animate-fade-up inline-flex items-center gap-2 px-4 py-2 mb-7 glass rounded-full text-xs font-medium tracking-widest uppercase text-primary">
+              <span className="w-1.5 h-1.5 bg-primary rounded-full animate-glow-pulse" />
               Управление строительством в Беларуси
             </div>
-            <h1 className="animate-fade-up font-display font-bold text-primary-foreground text-4xl sm:text-5xl lg:text-6xl leading-[1.05] tracking-tight" style={{ animationDelay: '0.1s' }}>
-              Надёжный контроль на каждом этапе строительства
+            <h1 className="animate-fade-up font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight" style={{ animationDelay: '0.1s' }}>
+              <span className="text-gradient">Надёжный контроль</span>
+              <br />
+              на каждом этапе стройки
             </h1>
-            <p className="animate-fade-up mt-6 text-lg text-primary-foreground/75 max-w-xl leading-relaxed" style={{ animationDelay: '0.2s' }}>
+            <p className="animate-fade-up mt-7 text-lg text-muted-foreground max-w-xl leading-relaxed" style={{ animationDelay: '0.2s' }}>
               Комплексное управление строительством и независимый технический надзор. Аттестат III класса сложности, более 10 лет опыта и 30+ реализованных проектов.
             </p>
-            <div className="animate-fade-up mt-9 flex flex-wrap gap-4" style={{ animationDelay: '0.3s' }}>
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm font-semibold tracking-wide h-12 px-7">
+            <div className="animate-fade-up mt-10 flex flex-wrap gap-4" style={{ animationDelay: '0.3s' }}>
+              <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 rounded-full font-semibold tracking-wide h-13 px-8 glow hover-scale">
                 <a href="#contacts">Получить консультацию</a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="rounded-sm h-12 px-7 border-primary-foreground/30 text-primary-foreground bg-transparent hover:bg-primary-foreground/10 hover:text-primary-foreground">
+              <Button asChild size="lg" variant="outline" className="rounded-full h-13 px-8 border-border bg-card/40 backdrop-blur hover:bg-card hover:text-primary">
                 <a href="#services">Наши услуги</a>
               </Button>
             </div>
           </div>
         </div>
+
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-muted-foreground animate-float">
+          <Icon name="ChevronsDown" size={26} />
+        </div>
       </section>
 
       {/* Stats */}
-      <section className="bg-primary border-t border-white/10">
-        <div className="container grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/10">
-          {stats.map((s) => (
-            <div key={s.label} className="py-9 px-4 text-center">
-              <div className="font-display font-bold text-4xl lg:text-5xl text-accent">{s.value}</div>
-              <div className="mt-2 text-sm text-primary-foreground/70 uppercase tracking-wide">{s.label}</div>
-            </div>
-          ))}
+      <section className="relative -mt-20 z-20">
+        <div className="container">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border rounded-2xl overflow-hidden glass">
+            {stats.map((s, i) => (
+              <div key={s.label} className="py-10 px-4 text-center bg-card/60 hover:bg-card transition-colors animate-fade-up" style={{ animationDelay: `${i * 0.08}s` }}>
+                <div className="font-display font-bold text-4xl lg:text-5xl text-gradient">{s.value}</div>
+                <div className="mt-2 text-sm text-muted-foreground uppercase tracking-wide">{s.label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* About */}
-      <section id="about" className="py-24 relative">
-        <div className="absolute inset-0 grid-texture opacity-40" />
+      <section id="about" className="py-28 relative">
+        <div className="blob w-[450px] h-[450px] top-20 -right-32 bg-primary/10" />
         <div className="container relative grid lg:grid-cols-2 gap-14 items-start">
           <div>
-            <span className="font-display text-accent text-sm tracking-widest uppercase">О компании</span>
-            <h2 className="mt-3 font-display font-bold text-3xl lg:text-4xl text-primary leading-tight">
-              Инженерный партнёр, которому доверяют ответственные объекты
+            <span className="font-display text-primary text-sm tracking-widest uppercase">О компании</span>
+            <h2 className="mt-3 font-display font-bold text-4xl lg:text-5xl leading-tight">
+              Инженерный партнёр для <span className="text-gradient">ответственных объектов</span>
             </h2>
             <p className="mt-6 text-muted-foreground leading-relaxed">
               «Атлант Инжиниринг» — белорусская компания, специализирующаяся на комплексном управлении строительством и техническом надзоре. Более 10 лет мы защищаем интересы заказчиков, обеспечивая качество, соблюдение сроков и контроль бюджета.
@@ -141,12 +153,12 @@ export default function Index() {
             </p>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
-            {advantages.map((a) => (
-              <div key={a.title} className="bg-card border border-border p-6 rounded-sm hover:border-accent transition-colors">
-                <div className="grid place-items-center w-11 h-11 bg-primary text-accent rounded-sm">
+            {advantages.map((a, i) => (
+              <div key={a.title} className="group glass p-6 rounded-2xl hover:-translate-y-1.5 hover:border-primary/50 transition-all animate-fade-up" style={{ animationDelay: `${i * 0.08}s` }}>
+                <div className="grid place-items-center w-12 h-12 bg-primary/10 text-primary rounded-xl group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                   <Icon name={a.icon} size={22} />
                 </div>
-                <h3 className="mt-4 font-display font-semibold text-lg text-primary">{a.title}</h3>
+                <h3 className="mt-4 font-display font-semibold text-lg">{a.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{a.text}</p>
               </div>
             ))}
@@ -155,24 +167,24 @@ export default function Index() {
       </section>
 
       {/* Services */}
-      <section id="services" className="py-24 bg-secondary">
+      <section id="services" className="py-28 relative bg-secondary/40">
         <div className="container">
           <div className="max-w-2xl">
-            <span className="font-display text-accent text-sm tracking-widest uppercase">Услуги</span>
-            <h2 className="mt-3 font-display font-bold text-3xl lg:text-4xl text-primary leading-tight">
-              Полный цикл инженерного сопровождения
+            <span className="font-display text-primary text-sm tracking-widest uppercase">Услуги</span>
+            <h2 className="mt-3 font-display font-bold text-4xl lg:text-5xl leading-tight">
+              Полный цикл <span className="text-gradient">инженерного сопровождения</span>
             </h2>
           </div>
-          <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div className="mt-14 grid md:grid-cols-2 gap-6">
             {services.map((s, i) => (
-              <div key={s.title} className="group relative bg-card border border-border p-8 rounded-sm overflow-hidden hover:shadow-xl transition-all">
-                <span className="absolute top-6 right-7 font-display font-bold text-5xl text-border/60 group-hover:text-accent/30 transition-colors">
+              <div key={s.title} className="group relative glass p-8 rounded-2xl overflow-hidden hover:border-primary/50 transition-all">
+                <span className="absolute -top-2 right-6 font-display font-bold text-7xl text-foreground/5 group-hover:text-primary/20 transition-colors">
                   0{i + 1}
                 </span>
-                <div className="grid place-items-center w-12 h-12 bg-primary text-accent rounded-sm">
-                  <Icon name={s.icon} size={24} />
+                <div className="grid place-items-center w-14 h-14 bg-gradient-to-br from-primary to-accent text-primary-foreground rounded-xl glow">
+                  <Icon name={s.icon} size={26} />
                 </div>
-                <h3 className="mt-5 font-display font-semibold text-xl text-primary">{s.title}</h3>
+                <h3 className="mt-6 font-display font-semibold text-xl">{s.title}</h3>
                 <p className="mt-3 text-muted-foreground leading-relaxed max-w-md">{s.text}</p>
               </div>
             ))}
@@ -181,23 +193,26 @@ export default function Index() {
       </section>
 
       {/* Certificates */}
-      <section id="certificates" className="py-24">
-        <div className="container">
-          <div className="max-w-2xl">
-            <span className="font-display text-accent text-sm tracking-widest uppercase">Документы</span>
-            <h2 className="mt-3 font-display font-bold text-3xl lg:text-4xl text-primary leading-tight">
-              Сертификаты, лицензии и награды
+      <section id="certificates" className="py-28 relative">
+        <div className="blob w-[400px] h-[400px] top-40 left-1/2 -translate-x-1/2 bg-accent/10" />
+        <div className="container relative">
+          <div className="max-w-2xl mx-auto text-center">
+            <span className="font-display text-primary text-sm tracking-widest uppercase">Документы</span>
+            <h2 className="mt-3 font-display font-bold text-4xl lg:text-5xl leading-tight">
+              Сертификаты, лицензии и <span className="text-gradient">награды</span>
             </h2>
             <p className="mt-4 text-muted-foreground">
               Деятельность компании подтверждена всеми необходимыми разрешительными документами.
             </p>
           </div>
-          <div className="mt-12 grid md:grid-cols-3 gap-6">
-            {certificates.map((c) => (
-              <div key={c.title} className="bg-primary text-primary-foreground p-8 rounded-sm border-l-4 border-accent">
-                <Icon name={c.icon} size={32} className="text-accent" />
+          <div className="mt-14 grid md:grid-cols-3 gap-6">
+            {certificates.map((c, i) => (
+              <div key={c.title} className="group glass p-8 rounded-2xl text-center hover:-translate-y-1.5 transition-all animate-fade-up" style={{ animationDelay: `${i * 0.1}s` }}>
+                <div className="mx-auto grid place-items-center w-16 h-16 rounded-2xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                  <Icon name={c.icon} size={30} />
+                </div>
                 <h3 className="mt-5 font-display font-semibold text-xl">{c.title}</h3>
-                <p className="mt-3 text-sm text-primary-foreground/70 leading-relaxed">{c.text}</p>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{c.text}</p>
               </div>
             ))}
           </div>
@@ -205,47 +220,48 @@ export default function Index() {
       </section>
 
       {/* Contacts */}
-      <section id="contacts" className="py-24 bg-primary relative overflow-hidden">
-        <div className="absolute inset-0 grid-texture opacity-10" />
+      <section id="contacts" className="py-28 relative overflow-hidden">
+        <div className="blob w-[600px] h-[600px] -bottom-40 -right-40 bg-primary/20" />
+        <div className="absolute inset-0 grid-texture" />
         <div className="container relative grid lg:grid-cols-2 gap-14">
-          <div className="text-primary-foreground">
-            <span className="font-display text-accent text-sm tracking-widest uppercase">Контакты</span>
-            <h2 className="mt-3 font-display font-bold text-3xl lg:text-4xl leading-tight">
-              Обсудим ваш проект
+          <div>
+            <span className="font-display text-primary text-sm tracking-widest uppercase">Контакты</span>
+            <h2 className="mt-3 font-display font-bold text-4xl lg:text-5xl leading-tight">
+              Обсудим <span className="text-gradient">ваш проект</span>
             </h2>
-            <p className="mt-5 text-primary-foreground/70 max-w-md leading-relaxed">
+            <p className="mt-5 text-muted-foreground max-w-md leading-relaxed">
               Оставьте заявку — мы свяжемся с вами, проконсультируем и предложим оптимальное решение для вашего объекта.
             </p>
-            <div className="mt-9 space-y-5">
+            <div className="mt-10 space-y-5">
               <a href={PHONE_HREF} className="flex items-center gap-4 group">
-                <span className="grid place-items-center w-11 h-11 bg-accent text-accent-foreground rounded-sm">
+                <span className="grid place-items-center w-12 h-12 bg-primary text-primary-foreground rounded-xl glow">
                   <Icon name="Phone" size={20} />
                 </span>
                 <div>
-                  <div className="text-xs text-primary-foreground/60 uppercase tracking-wide">Телефон</div>
-                  <div className="font-display font-semibold text-lg group-hover:text-accent transition-colors">{PHONE}</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wide">Телефон</div>
+                  <div className="font-display font-semibold text-lg group-hover:text-primary transition-colors">{PHONE}</div>
                 </div>
               </a>
               <div className="flex items-center gap-4">
-                <span className="grid place-items-center w-11 h-11 bg-white/10 text-accent rounded-sm">
+                <span className="grid place-items-center w-12 h-12 glass text-primary rounded-xl">
                   <Icon name="MapPin" size={20} />
                 </span>
                 <div>
-                  <div className="text-xs text-primary-foreground/60 uppercase tracking-wide">Регион работы</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wide">Регион работы</div>
                   <div className="font-medium">Республика Беларусь</div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="bg-card p-8 rounded-sm">
+          <div className="glass p-8 rounded-2xl glow">
             {sent ? (
               <div className="h-full grid place-items-center text-center py-10">
                 <div>
-                  <div className="mx-auto grid place-items-center w-14 h-14 bg-accent/15 text-accent rounded-full">
-                    <Icon name="Check" size={28} />
+                  <div className="mx-auto grid place-items-center w-16 h-16 bg-primary/15 text-primary rounded-full">
+                    <Icon name="Check" size={30} />
                   </div>
-                  <h3 className="mt-4 font-display font-semibold text-xl text-primary">Заявка отправлена</h3>
+                  <h3 className="mt-4 font-display font-semibold text-xl">Заявка отправлена</h3>
                   <p className="mt-2 text-muted-foreground">Мы свяжемся с вами в ближайшее время.</p>
                 </div>
               </div>
@@ -257,11 +273,11 @@ export default function Index() {
                   setSent(true);
                 }}
               >
-                <h3 className="font-display font-semibold text-xl text-primary">Оставить заявку</h3>
-                <Input required placeholder="Ваше имя" className="rounded-sm h-12" />
-                <Input required type="tel" placeholder="Телефон" className="rounded-sm h-12" />
-                <Textarea placeholder="Кратко о вашем проекте" className="rounded-sm min-h-28" />
-                <Button type="submit" size="lg" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 rounded-sm font-semibold tracking-wide h-12">
+                <h3 className="font-display font-semibold text-xl">Оставить заявку</h3>
+                <Input required placeholder="Ваше имя" className="rounded-xl h-12 bg-background/50" />
+                <Input required type="tel" placeholder="Телефон" className="rounded-xl h-12 bg-background/50" />
+                <Textarea placeholder="Кратко о вашем проекте" className="rounded-xl min-h-28 bg-background/50" />
+                <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-xl font-semibold tracking-wide h-12 glow">
                   Отправить заявку
                 </Button>
                 <p className="text-xs text-muted-foreground text-center">
@@ -274,13 +290,13 @@ export default function Index() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary border-t border-white/10 py-8">
-        <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 text-primary-foreground/60 text-sm">
+      <footer className="border-t border-border py-8">
+        <div className="container flex flex-col sm:flex-row items-center justify-between gap-4 text-muted-foreground text-sm">
           <div className="flex items-center gap-2.5">
-            <span className="grid place-items-center w-7 h-7 bg-accent text-accent-foreground rounded-sm">
+            <span className="grid place-items-center w-7 h-7 bg-primary text-primary-foreground rounded-lg">
               <Icon name="Mountain" size={16} />
             </span>
-            <span className="font-display font-semibold text-primary-foreground tracking-wide">АТЛАНТ ИНЖИНИРИНГ</span>
+            <span className="font-display font-semibold text-foreground tracking-wide">АТЛАНТ ИНЖИНИРИНГ</span>
           </div>
           <span>© {new Date().getFullYear()} Все права защищены</span>
         </div>
