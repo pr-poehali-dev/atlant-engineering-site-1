@@ -247,8 +247,8 @@ export default function Index() {
                   <Icon name="MapPin" size={20} />
                 </span>
                 <div>
-                  <div className="text-xs text-muted-foreground uppercase tracking-wide">Регион работы</div>
-                  <div className="font-medium">Республика Беларусь</div>
+                  <div className="text-xs text-muted-foreground uppercase tracking-wide">Адрес офиса</div>
+                  <div className="font-medium">г. Минск, ул. Комсомольская, 3</div>
                 </div>
               </div>
             </div>
